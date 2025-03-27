@@ -75,6 +75,9 @@ export class Reader {
 			spread: this.settings.spread.mod,
 			minSpreadWidth: this.settings.spread.min,
 			width: "100%",
+
+			allowScriptedContent: true,
+
 			height: "100%",
 			snap: true
 		});

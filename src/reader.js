@@ -130,44 +130,50 @@ export class Reader {
 
 		this.rendition.on("keydown", this.keyboardHandler.bind(this));
 
-		this.on("prev", () => {
-			if (this.book.package.metadata.direction === "rtl") {
-				this.rendition.next();
-			} else {
-				this.rendition.prev();
-			}
-		});
+		// Avoid excessive callback assign!
 
-		this.on("next", () => {
-			if (this.book.package.metadata.direction === "rtl") {
-				this.rendition.prev();
-			} else {
-				this.rendition.next();
-			}
-		});
+		if (!this.first_time_runned) {
+			this.first_time_runned = true;
 
-		this.on("languagechanged", (value) => {
-			this.settings.language = value;
-		});
+			this.on("prev", () => {
+				if (this.book.package.metadata.direction === "rtl") {
+					this.rendition.next();
+				} else {
+					this.rendition.prev();
+				}
+			});
 
-		this.on("flowchanged", (value) => {
-			this.settings.flow = value;
-			this.rendition.flow(value);
-		});
+			this.on("next", () => {
+				if (this.book.package.metadata.direction === "rtl") {
+					this.rendition.prev();
+				} else {
+					this.rendition.next();
+				}
+			});
 
-		this.on("spreadchanged", (value) => {
-			const mod = value.mod || this.settings.spread.mod;
-			const min = value.min || this.settings.spread.min;
-			this.settings.spread.mod = mod;
-			this.settings.spread.min = min;
-			this.rendition.spread(mod, min);
-		});
+			this.on("languagechanged", (value) => {
+				this.settings.language = value;
+			});
 
-		this.on("styleschanged", (value) => {
-			const fontSize = value.fontSize;
-			this.settings.styles.fontSize = fontSize;
-			this.rendition.themes.fontSize(fontSize + "%");
-		});
+			this.on("flowchanged", (value) => {
+				this.settings.flow = value;
+				this.rendition.flow(value);
+			});
+
+			this.on("spreadchanged", (value) => {
+				const mod = value.mod || this.settings.spread.mod;
+				const min = value.min || this.settings.spread.min;
+				this.settings.spread.mod = mod;
+				this.settings.spread.min = min;
+				this.rendition.spread(mod, min);
+			});
+
+			this.on("styleschanged", (value) => {
+				const fontSize = value.fontSize;
+				this.settings.styles.fontSize = fontSize;
+				this.rendition.themes.fontSize(fontSize + "%");
+			});
+		}
 	}
 
 	/* ------------------------------- Common ------------------------------- */

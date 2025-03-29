@@ -76,7 +76,10 @@ export class Reader {
 			minSpreadWidth: this.settings.spread.min,
 			width: "100%",
 
+			//script:"https://hypothes.is/embed.js",
 			allowScriptedContent: true,
+			// allowSameOrigin: false, 
+			// should be set false, but the option is not yet available.
 
 			height: "100%",
 			snap: true

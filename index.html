@@ -24,8 +24,24 @@
 		import { Reader } from "./dist/js/epubreader.min.js"
 		const url = new URL(window.location)
 		const path = url.searchParams.get("bookPath") || "https://s3.amazonaws.com/moby-dick/"
-		window.onload = (e) => new Reader(path)
+		//window.onload = (e) => new Reader(path)
+		window.onload = (e) => {
+			let reader = new Reader(path);			
+			
+			document.body.addEventListener("load", function(e) {
+    			if(e.target.tagName == 'IFRAME'){
+					let iframedoc = e.target.contentWindow.document
+					iframedoc.querySelector('title').prepend(document.querySelector('title').innerHTML);
+				}
+			}, true // use capture 
+			)
+
+			return reader;
+		}
 	</script>
+
+	<script src="https://hypothes.is/embed.js" async></script>
+
 </head>
 
 <body>

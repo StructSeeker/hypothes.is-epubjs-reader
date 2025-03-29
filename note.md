@@ -10,3 +10,12 @@ iframe.onload = () => {
 
 ```
 
+# Require Cors for bookPath
+
+# Use bookPath treated as folder 
+
+https://github.com/futurepress/epub.js/issues/1320
+
+# Try form
+
+ <input type="text" id="name" name="name"/>

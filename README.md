@@ -10,10 +10,10 @@ Read your epub file using the top-right upload button, the file is not transmitt
 
 ## Features
 
-Embedded Hypothes.is: Usable on any broweser-support device.
-More Readable Title: the epub title is injected before the page title, making it more viewable in your profile.
-Fix upstream UI Bugs.
+**Embedded hypothes.is:** Usable on any broweser-support device.  
+**More Readable Title:** the epub title is injected before the page title, making it more viewable in your profile.  
+Fix upstream UI Bugs.  
 
-**Caution:**  Be sure that epub is safe and contain no malicious script!
+**Caution:**  Make sure that the uploaded epub is safe!
 
 Todo: fix the security flaw.
